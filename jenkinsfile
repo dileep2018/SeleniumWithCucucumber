@@ -21,11 +21,21 @@ node {
          }   
        }
     }
-    stage('validate'){
+    stage('compile'){
+       // Get maven home path
+       def mvnHome = tool name: 'maven-3', type: 'maven'
+       sh "${mvnHome}/bin/mvn compile"
+    }
+    stage('package'){
+      // Get maven home path
+       def mvnHome = tool name: 'maven-3', type: 'maven'
+       sh "${mvnHome}/bin/mvn clean package"
+    }
+    stage('functionaltest'){
        // Get maven home path
        def mvnHome = tool name: 'maven-3', type: 'maven'
        sh "${mvnHome}/bin/mvn verify"
-    }
+   }
     stage("cucumber report"){
       cucumber fileIncludePattern: '**/*.json', sortingMethod: 'ALPHABETICAL'
     }
