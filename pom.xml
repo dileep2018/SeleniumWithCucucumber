@@ -104,4 +104,14 @@
         </dependency>
 
     </dependencies>
-</project>
+    <distributionManagement>
+		 <snapshotRepository>
+		    <id>nexus</id>
+		    <url>http://34.229.38.226:8081/repository/selinumsnap/</url>
+		 </snapshotRepository>
+		<repository>
+		    <id>nexus</id>
+		    <url>http://34.229.38.226:8081/repository/selinumrelea/</url>
+		</repository>
+ </distributionManagement>
+ </project>
